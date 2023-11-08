@@ -21,6 +21,14 @@ app.post('/carros', (req, res) => {
 
 // feature nova criada - login
 
+// deletar um carro
+app.delete('/carros/:id', (req, res) => {
+  const id = req.params.id;
+  const index = carros.findIndex((carro) => carro.id === id);
+  carros.splice(index, 1);
+  res.status(204).end();
+});
+
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
